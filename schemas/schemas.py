@@ -1,11 +1,11 @@
 from pydantic import BaseModel, EmailStr
 from typing import List, Optional
-from datetime import datetime
+from datetime import date
 
 # Базовый класс с общей конфигурацией
 class BaseConfig(BaseModel):
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserCreate(BaseConfig):
     username: str
@@ -20,12 +20,17 @@ class UserResponse(BaseConfig):
 class TaskCreate(BaseConfig):
     title: str
     description: Optional[str] = None
-    due_date: Optional[datetime] = None
+    due_date: Optional[date] = None
     user_id: int  # ID пользователя, которому принадлежит задача
 
 class TaskResponse(BaseConfig):
     id: int
     title: str
     description: Optional[str] = None
-    due_date: Optional[datetime] = None
+    due_date: Optional[date] = None
     user_id: int  # ID пользователя, которому принадлежит задача
+
+class TaskUpdate(BaseModel):
+    title: str | None = None
+    description: str | None = None
+    due_date: date | None = None
