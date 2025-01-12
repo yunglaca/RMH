@@ -2,11 +2,14 @@ from DB.database import Base
 from sqlalchemy import String, Date, ForeignKey
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 
+
 class User(Base):
     username: Mapped[str] = mapped_column(String, unique=True, nullable=False)
     email: Mapped[str] = mapped_column(String, unique=True, nullable=False)
-    #Связь с задачами
-    tasks: Mapped[list["Task"]] = relationship("Task", back_populates="user", cascade="all, delete-orphan")
+    # Связь с задачами
+    tasks: Mapped[list["Task"]] = relationship(
+        "Task", back_populates="user", cascade="all, delete-orphan"
+    )
 
 
 class Task(Base):

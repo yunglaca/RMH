@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 from alembic import context
 
 from DB.database import Base, DATABASE_URL
-from DB.models import User,Task
+from DB.models import User, Task
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
@@ -96,4 +96,4 @@ def run_migrations_online() -> None:
 if context.is_offline_mode():
     run_migrations_offline()
 else:
-    run_migrations_online()
+    asyncio.run(run_migrations_online()) # type: ignore
