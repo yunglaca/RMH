@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: Rmhtest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/Rmhtest 
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+    ports:
+      - "8000:8000"  # Проброс порта 8000 из контейнера на хост
+
+  db:
+    container_name: rmhbase
+    image: postgres:15
+    restart: always
+    ports:
+      - "5430:5432" # Маппинг порта PostgreSQL
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
