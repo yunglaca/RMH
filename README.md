@@ -1,4 +1,4 @@
-# RMH
+
 test task
 
 # RMH
@@ -9,9 +9,13 @@ CRUD + tests + docker
 
 
 Заполнить .env файл по примеру .env.example.
+
+pip install requirements.txt
+
+
 uvicorn main:app --reload
 
-Через докер:
+Либо через докер:
 
 ```bash
 docker-compose up --build
