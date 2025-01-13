@@ -10,6 +10,10 @@ CRUD + tests + docker
 
 Заполнить .env файл по примеру .env.example.
 
+
+создать venv
+
+
 pip install requirements.txt
 
 
