@@ -22,6 +22,7 @@ uvicorn main:app --reload
 Либо через докер:
 
 ```bash
+Заполнить .env файл по примеру .env.example.
 docker-compose up --build
 docker-compose up
 ```
