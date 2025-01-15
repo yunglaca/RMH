@@ -19,10 +19,15 @@ pip install requirements.txt
 
 uvicorn main:app --reload
 
-Либо через докер:
+### Либо через докер:
 
 ```bash
 Заполнить .env файл по примеру .env.example.
 docker-compose up --build
-docker-compose up
+```
+
+#### Тестирование через pytest
+
+```bash
+pytest
 ```
